@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ClipMate">
+  <defs>
+    <linearGradient id="cm-mark" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <!-- Open "C" ring: arc swept the long way round, leaving a gap on the right. -->
+  <path d="M46.6 16.4A22 22 0 1 0 46.6 47.6"
+        fill="none" stroke="url(#cm-mark)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Download arrow nested inside the ring. -->
+  <path d="M32 18V40M23.5 32.5 32 41l8.5-8.5"
+        fill="none" stroke="url(#cm-mark)" stroke-width="6.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IQ2SAVE — Your Links. Your Media.</title>
+<meta name="description" content="IQ2SAVE — Instagram Reels and direct-link media downloader. Paste a link, pick a format, keep the file. No account, no tracking, no ads.">
+<meta name="theme-color" content="#0b1220">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/">
+        <img src="/assets/mark.svg" alt="" width="30" height="30">
+        <span>IQ2SAVE<small data-i18n="brand.tagline">Your Links. Your Media.</small></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" data-i18n="nav.home">Home</a>
+        <a href="/library" data-i18n="nav.library">Library</a>
+        <a href="/settings" data-i18n="nav.settings">Settings</a>
+      </div>
+
+      <div class="nav-actions">
+        <select class="lang-select" data-lang-select aria-label="Language" data-i18n-aria-label="nav.language"></select>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme"></button>
+        <button class="icon-btn hamburger" type="button" id="nav-toggle" aria-expanded="false" aria-controls="drawer" aria-label="Menu" data-i18n-aria-label="nav.menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head">
+    <strong>IQ2SAVE</strong>
+    <button class="icon-btn" type="button" id="drawer-close" aria-label="Close" data-i18n-aria-label="nav.close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <a href="/" data-i18n="nav.home">Home</a>
+  <a href="/library" data-i18n="nav.library">Library</a>
+  <a href="/settings" data-i18n="nav.settings">Settings</a>
+</aside>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="features.offline.title">Private &amp; ad-free</span></span>
+      <h1><span class="gradient-text" data-i18n="hero.title">Instagram Reels &amp; Media Downloader</span></h1>
+      <p class="lead" data-i18n="hero.subtitle">Save videos in up to 4K, or pull just the MP3 audio. Paste a link, pick a format, keep the file.</p>
+
+      <form class="url-form" id="url-form" autocomplete="off" novalidate>
+        <label class="visually-hidden" for="url-input" data-i18n="hero.input.label">Media link</label>
+        <div class="url-field">
+          <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>
+          <input class="url-input" id="url-input" type="url" inputmode="url" spellcheck="false"
+                 placeholder="https://…" data-i18n-placeholder="hero.input.placeholder"
+                 aria-describedby="url-hint" aria-invalid="false">
+          <button class="clear-btn" id="clear-btn" type="button" aria-label="Clear" data-i18n-aria-label="hero.clear">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <button class="btn btn-outline btn-lg btn-block" id="analyze-btn" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 19h16"/></svg>
+          <span data-i18n="hero.analyze">Analyze</span>
+        </button>
+        <button class="btn btn-ghost btn-block" id="paste-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6v3H9z"/><path d="M7 6H6v14h12V6h-1"/></svg>
+          <span data-i18n="hero.paste">Paste</span>
+        </button>
+        <p class="url-hint" id="url-hint" data-i18n="hero.hint">Only download content you own or have permission to save.</p>
+      </form>
+      <div class="notice notice-warning" id="engine-banner" hidden></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section id="result-region" hidden aria-live="polite"></section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="services.title">What you can do</h2>
+        <p data-i18n="services.subtitle">Paste a link from any of these and pick what you want to keep.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="service-card">
+          <span class="service-icon service-icon-brand"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ig-brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><linearGradient id="ig-brand" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FEDA75"/><stop offset=".25" stop-color="#FA7E1E"/><stop offset=".5" stop-color="#D62976"/><stop offset=".75" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><path d="M7.5 3.5h9a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4v-9a4 4 0 0 1 4-4Z"/><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M16.9 7.1h.01"/></svg></span>
+          <div class="service-body">
+            <h3 data-i18n="services.reels.title">Instagram Reels</h3>
+            <p data-i18n="services.reels.body">Public Reels and video posts. Private accounts stay private.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><path d="M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/><path d="M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/></svg></span>
+          <div class="service-body">
+            <h3 data-i18n="services.convert.title">Audio as MP3</h3>
+            <p data-i18n="services.convert.body">Pull just the sound out of any of the above, converted with ffmpeg.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M4 15h16"/><path d="M9 4v16"/><path d="M15 4v16"/></svg></span>
+          <div class="service-body">
+            <h3 data-i18n="services.direct.title">Direct links &amp; streams</h3>
+            <p data-i18n="services.direct.body">MP4, MP3, images, plus HLS and DASH playlists stitched into one file.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="steps.title">How it works</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card step">
+          <span class="step-num">1</span>
+          <h3 data-i18n="steps.one.title">Paste the link</h3>
+          <p data-i18n="steps.one.body">IQ2SAVE reads the link on your own device and reports what is actually available.</p>
+        </div>
+        <div class="card step">
+          <span class="step-num">2</span>
+          <h3 data-i18n="steps.two.title">Choose a format</h3>
+          <p data-i18n="steps.two.body">Real resolutions and real sizes, read from the source.</p>
+        </div>
+        <div class="card step">
+          <span class="step-num">3</span>
+          <h3 data-i18n="steps.three.title">Download</h3>
+          <p data-i18n="steps.three.body">Progress comes straight from the download engine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="features.title">Built for your device</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 9.6 4.1-1.2 7-5.2 7-9.6V6l-7-3Z"/></svg>
+          <div><h3 data-i18n="features.offline.title">Private &amp; ad-free</h3><p data-i18n="features.offline.body">No account, no tracking, no ads. Nothing you paste leaves your device.</p></div>
+        </div>
+        <div class="card feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+          <div><h3 data-i18n="features.honest.title">Honest progress</h3><p data-i18n="features.honest.body">No invented percentages.</p></div>
+        </div>
+        <div class="card feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+          <div><h3 data-i18n="features.dark.title">Dark mode</h3><p data-i18n="features.dark.body">Follows your system theme.</p></div>
+        </div>
+        <div class="card feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 13h6l-1 8 8-10h-6l1-8Z"/></svg>
+          <div><h3 data-i18n="features.fast.title">No heavy stack</h3><p data-i18n="features.fast.body">One dependency, works on a phone.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>IQ2SAVE</h4>
+        <p data-i18n="hero.subtitle">Runs entirely on your own device.</p>
+      </div>
+      <div>
+        <h4 data-i18n="nav.menu">Menu</h4>
+        <ul>
+          <li><a href="/" data-i18n="nav.home">Home</a></li>
+          <li><a href="/library" data-i18n="nav.library">Library</a></li>
+          <li><a href="/settings" data-i18n="nav.settings">Settings</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="settings.engines">Engines</h4>
+        <ul>
+          <li><span class="mono">yt-dlp</span></li>
+          <li><span class="mono">ffmpeg</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">Runs on your own device.</span>
+      <span data-i18n="footer.reminder">Download only what you own or are allowed to save.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

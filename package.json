@@ -1,0 +1,20 @@
+{
+  "name": "clipmate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "IQ2SAVE - local media archiving utility for content you own or are permitted to download",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test 'test/*.test.js'",
+    "doctor": "node server/doctor.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
